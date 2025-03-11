@@ -34,11 +34,11 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
         ```shell
         > docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
         ```
-         > 1521 : 오라클 기본포트(Wellknown port / ex: jupyterlab 8888)
-         > CHARACKTERSET : 글은 이렇게 쓸 거야!
-         > --restart=always : 항상 실행시켜 줘!
-         > 아이디 system / oracle (도커 이미지 내부에서 기본적으로 설정된 값)
-           ; docker exec -it oracle11g bash 하면 아이디와 비번 찾을 수 있다 !
+         - 1521 : 오라클 기본포트(Wellknown port / ex: jupyterlab 8888)
+         - CHARACKTERSET : 글은 이렇게 쓸 거야!
+         - --restart=always : 항상 실행시켜 줘!
+         - 아이디 system / oracle (도커 이미지 내부에서 기본적으로 설정된 값)
+           > docker exec -it oracle11g bash 하면 아이디와 비번 찾을 수 있다 !
     5) 도커 실행 확인
         : Docker Desktop ; Containers 확인
     6) Powershell 오픈

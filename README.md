@@ -71,7 +71,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
          > INSERT, SELECT, UPDATE, DELETE
 
 6. SELCET 기본  ## 제일 어렵다 !!
-    : 데이터 조회 시 사용하는 기본명령어
+    - 데이터 조회 시 사용하는 기본명령어
         ```sql
         -- 기본 주석(한 줄)
         /* 여러줄 주석
@@ -84,7 +84,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
          [ORDER BY 정렬속성(들) ASC|DESC]
           [WITH ROLLUP]
         ```
-    : 기본 쿼리 연습 : [SQL](./day01/sql01_select기본.sql)
+    - 기본 쿼리 연습 : [SQL](./day01/sql01_select기본.sql)
         1) 기본 SELECT
         2) WHERE 조건절
         3) NULL (!)

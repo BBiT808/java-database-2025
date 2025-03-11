@@ -49,7 +49,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
         ```
     7) DBeaver 접속
         : Connection > Select your DB > Oracle 선택
-        <img src="./image/db001.png" width="650">
+        <img src="/image/db001.png" width="650">
 
 4. DBeaver Community 툴 설치 # 오라클 단독으로는 사용 불가(서버이므로)
     : https://dbeaver.io/download/

@@ -18,19 +18,20 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
     - SQL을 배우는 것 !
 
 3. Oracle 설치(Docker)
-    1) powershell 오픈
+    1) PowerShell 오픈
        # 드래그 하고 엔터 치면 복사 가능 !!
-    2) pull 내려받기  # 백틱을 쓰면 명령어 적기 가능 !
+    2) docker search로 다운로드하고 싶은 이미지 검색
+    3) docker pull 내려받기  # 백틱을 쓰면 명령어 적기 가능 !
         ```shell
         > docker pull oracleinanutshell/oracle-xe-11g
         ```
-    3) 다운로드 이미지 확인
+    4) 다운로드 이미지 확인
         ```shell
         PS C:\User\Admin> docker image ls
         REPOSITORY                        TAG       IMAGE ID       CREATED        SIZE
         ...
         oracleinanutshell/oracle-xe-11g   latest    8b740e77d4b9   6 years ago    2.79GB
-    4) 도커 컨테이너 실행
+    5) 도커 컨테이너 실행
         ```shell
         > docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
         ```
@@ -39,17 +40,17 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
          - --restart=always : 항상 실행시켜 줘!
          - 아이디 system / oracle (도커 이미지 내부에서 기본적으로 설정된 값)
            > docker exec -it oracle11g bash 하면 아이디와 비번 찾을 수 있다 !
-    5) 도커 실행 확인
+    6) 도커 실행 확인
         : Docker Desktop ; Containers 확인
-    6) Powershell 오픈
+    7) Powershell 오픈
         ```shell
         > docker exec -it oracle19c bash
         [oracle@0c... ~]$ sqlplus / as sysdba
         SQL >
         ```
-    7) DBeaver 접속
+    8) DBeaver 접속
         : Connection > Select your DB > Oracle 선택
-        <img src="/image/db001.png" width="650">
+        <img src="./image/db001.png" width="650">
 
 4. DBeaver Community 툴 설치 # 오라클 단독으로는 사용 불가(서버이므로)
     : https://dbeaver.io/download/
@@ -66,9 +67,9 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
      2) DCL(Data Control Lang)
         : 사용자 권한 부여, 해제, 트랜잭션 시작 및 종료
          > GRANT, REVOKE, BEGIN TRANS, COMMIT, ROLLBACK
-     3) DML(Data Manupulation Lang) # 데이터 자체를 조작하는 것
+     3) **DML**(Data Manupulation Lang) # 데이터 자체를 조작하는 것
         : 데이터 조작 언어 (** 핵심 !!), 데이터 삽입, 조회, 수정 및 삭제
-         > INSERT, SELECT, UPDATE, DELETE
+         > `INSERT`, `SELECT`, `UPDATE`, `DELETE`
 
 6. SELCET 기본  ## 제일 어렵다 !!
     - 데이터 조회 시 사용하는 기본명령어
@@ -90,3 +91,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
         3) NULL (!)
         4) ORDER BY 정렬
         5) 집합
+
+7. 함수(내장함수)
+    - 문자함수 : [SQL](./day01/sql02_함수.sql)
+    - 숫자함수

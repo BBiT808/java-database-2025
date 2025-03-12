@@ -140,5 +140,40 @@ SELECT email, phone_number, job_id
   
   /*
    * CASE 구문, 정말 중요!!
-   * if, elif의 중복된 구문과 
+   * if, elif의 중복된 구문과 유사 
    * */
+  
+SELECT CASE job_id WHEN 'AD_PRES' THEN '사장'
+				   WHEN 'AD_VP' THEN '부사장'
+				   WHEN 'IT_PROG' THEN '프로그래머'
+				   WHEN 'SA_MAN'    THEN '영업사원'
+				   ELSE '미분류'
+		 END AS 직급
+	 , employee_id
+	 , job_id  
+  FROM employees;
+  
+  /*
+   * 정규식(Requla Expression) : 문자열 패턴을 가지고, 동일한 패턴 데이터 추출 사용
+   * ^, $, \., *, [], [^] 패턴인식할 때 필요한 키워드.
+   * 
+   * */
+
+
+SELECT *
+  FROM employees
+ WHERE phone_number LIKE '%.%.%'  -- 세자리 전화, 네자리 전화번호가 구분 안 됨 !
+
+ 
+-- 전화번호가 .로 구분되는 세 자리 전화번호만 필터링 !!
+ -- '[1-9]{6}-[1-9]{7}' 주민번호 정규식 패턴
+SELECT *
+  FROM employees
+ WHERE regexp_like(phone_number, '[0-9]{3}.[0-9]{3}.[0-9]{4}');
+
+-- first_name이 J(대문자 j)로 시작하고, 두 번째 글자가 a나 o인 사람을 출력하시오 !!
+--   : like로 하면 힘들지만, 정규식으로 하면 이렇게 쉽게 가능하다 !! 
+SELECT *
+  FROM employees
+ WHERE regexp_like(first_name, '^J(a|o)');
+ 

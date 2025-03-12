@@ -100,21 +100,37 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
 ## 2일차
 # F2 : 이름 바꾸기 / F3 : 새로 만들기 꼭 기억하자 !!
 - 함수 (계속)
-    - 문자함수 부터:
+    - 문자함수 부터: [sql](./day02/sql01_함수계속.sql)
     - 숫자함수
     - 날짜함수
     - 형변환함수
+- 복수행함수 : [sql](./day02/sql02_복수행함수.sql)
+    - 집계함수
+    - GROUP BY
+    - HAVING
+    - ROLLUP
+    - RANK, DENSE_RANK, ROW_NUMBER
 
 8. 데이터베이스 타입형  ** 실무에서 제일 실수 많이 함 !! 기억해두자 !!
     - **CHAR(n)** : 고정형 문자열, 최대 2000bytes
         - CHAR(20)으로 'Hello World'를 입력하면, 'Hello World         '로 저장 !(공백 포함)
-        - 기준코드나 반드시 자리수를 지켜야하는 데이터 필요
+        - 기준코드나 반드시 자리수를 지켜야하는 데이터 필요. ex) 주민번호 등 !
     - **VARCHAR2(n)** : 가변형 문자열, 최대 4000bytes
         - VARCHAR2(20)로 'Hello World'를 저장하면, 'Hello World'로 저장! (공백 없음)
-    - NUMBER(p,s) : 숫자값, p 전체 자리 수, s 소수점 길이. 최대 22byt
+    - **NUMBER(p,s)** : 숫자값, p 전체 자리 수, s 소수점 길이. 최대 22byt
     - INTEGER : 모든 데이터의 기준. 4byte, 정수를 담는 데이터형
     - FLOAT(p) : 실수형 타입, 최대 22byte
-    - DATE : 날짜 타입
-    - LONG(n) : 가변길이 문자열, 최대 2Gbytes
+    - **DATE** : 날짜 타입
+    - **LONG(n)** : 가변길이 문자열, 최대 2Gbytes
     - LONG RAW(n) : 원시 이진 데이터, 최대 2Gbytes
+    - CLOB : 대용량 텍스트 데이터타입, 최대 4G
+    - BLOB : 대용량 바이너리 데이터타입, 최대 4G
+    - BFILE : 외부파일에 저장된 테이터, 4G
 
+
+## 3일차
+- JOIN
+    - 파티션곱
+    - 내부조인, 외부조인
+- DDL
+    - CREATE, ALTER, DROP

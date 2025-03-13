@@ -19,7 +19,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
 
 3. Oracle 설치(Docker)
     1) PowerShell 오픈
-       # 드래그 하고 엔터 치면 복사 가능 !!
+       ### 드래그 하고 엔터 치면 복사 가능 !!
     2) docker search로 다운로드하고 싶은 이미지 검색
     3) docker pull 내려받기  # 백틱을 쓰면 명령어 적기 가능 !
         ```shell
@@ -132,9 +132,9 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
 ## 3일차 !!!
 - JOIN : [sql](./day03/sql03_조인기본.sql)
     - ERD(Entitiy Relationship Diagram) : 개체 관계 다이어그램 ** 제일 중요한 것 !!
-        > PK(Primary Key) : 기본 키. ; 중복이 안 되며 빠진 데이터가 하나도 없다. (UNIQUE, NOT NULL)
-        > FK(Foreign Key) : 외래 키. ; 다른 엔티티(테이블)의 PK. 두 엔티티의 관계를 연결해주는 값
-        > Relationship : 부모 엔티티와 자식 엔티티 간의 연관, 부모, 1, 자식 N을 가질 수 있음
+        > - PK(Primary Key) : 기본 키. ; 중복이 안 되며 빠진 데이터가 하나도 없다. (UNIQUE, NOT NULL)
+        > - FK(Foreign Key) : 외래 키. ; 다른 엔티티(테이블)의 PK. 두 엔티티의 관계를 연결해주는 값
+        > - Relationship : 부모 엔티티와 자식 엔티티 간의 연관, 부모, 1, 자식 N을 가질 수 있음
     - 카티션곱
         - 두 개 이상의 테이블의 조건과 관계 없이 연결할 수 있는 경우의 수 전체로 만든 데이터
         - 조인 이전에 데이터 확인 ; 실무에서 카티션곱으로 데이터를 사용할 일이 절! 대! 없음 !! 

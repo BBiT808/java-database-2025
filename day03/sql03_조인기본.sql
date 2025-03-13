@@ -68,3 +68,43 @@ SELECT e.employee_id, e.first_name ||' '|| e.last_name AS "full_name"
    AND d.department_id = 60;
 
 -- 외부조인(OUTER JOIN) ; 내부조인에서 NULL 값으로 인해 나오지 않았던 값도 나올 수 있음 !!
+-- 내부조인 : 보통 PK와 FK간의 일치하는 조건의 데이터를 찾는 것
+-- 외부조인 : PK와 FK간의 일치하지 않는 조건의 데이터도 찾는 것
+-- 테이블 1 OUTER JOIN 테이블 2
+-- 테이블 1번을 기준으로 외부조인 LEFT OUTER JOIN
+-- 테이블 2번을 기준으로 외부조인 RIGHT OUTER JOIN
+
+-- ANSI 표준문법
+SELECT *
+  FROM employees e
+  LEFT OUTER JOIN departments d
+    ON e.department_id = d.department_id
+ WHERE e.DEPARTMENT_ID IS NULL;
+
+---- employees에 있는데
+
+-- Oracle 문법
+-- (+) 만족하지 않는 조건도 더 나오게 한다는 뜻
+-- LEFT OUTER JOIN
+SELECT * 
+  FROM employees e, departments d
+ WHERE e.department_id = d.DEPARTMENT_ID(+);
+
+--RIGHT OUTER JOIN
+SELECT *
+  FROM employees e, departments d
+ WHERE e.department_id = d.department_id;
+
+-- INNER JOIN은 INNER를 생략가능
+-- OUTER JOIN에만 LEFT, RIGHT 존재하므로 OUTER 생략가능
+
+-- 셀프조인 : 자기자신을 두 번 사용하는 조인
+SELECT e1.first_name || ' '|| e1.last_name AS "full_emp_name"
+	 , e1.job_id
+	 , e1.MANAGER_ID 
+	 , e2.FIRSt_name || ' ' || e2.last_name AS "full_mng_name"
+	 , e2.job_id
+  FROM employees e1, employees e2
+ WHERE e1.manager_id = e2.employee_id(+)
+ ORDER BY e1.manager_id;
+ 

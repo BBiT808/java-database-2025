@@ -128,9 +128,14 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
     - BFILE : 외부파일에 저장된 테이터, 4G
 
 
-## 3일차
+# 20250313 sql 3일차 !!!! 총 열흘한대 !! 넘 작아!!!!!
+## 3일차 !!!
 - JOIN
-    - 파티션곱
+    - ERD(Entitiy Relationship Diagram) : 개체 관계 다이어그램 ** 제일 중요한 것 !!
+        > PK(Primary Key) : 기본 키. ; 중복이 안 되며 빠진 데이터가 하나도 없다. (UNIQUE, NOT NULL)
+        > FK(Foreign Key) : 외래 키. ; 다른 엔티티(테이블)의 PK. 두 엔티티의 관계를 연결해주는 값
+        > Relationship : 부모 엔티티와 자식 엔티티 간의 연관, 부모, 1, 자식 N을 가질 수 있음
+    - 카티션곱 
     - 내부조인, 외부조인
 - DDL
     - CREATE, ALTER, DROP

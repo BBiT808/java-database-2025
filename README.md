@@ -215,7 +215,8 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
         - 제대로 일이 처리 되지 않으면 원상복귀 !
         - DB 설정 AUTO COMMIT 해제 권함 !!
         <img src="./image/db003.5.png" width="700">
-        - **ROLLBACK은 트랜잭션 종료가 아님 !!** COMMIT만 종료!! 
+        - **ROLLBACK은 트랜잭션 종료가 아님 !!** COMMIT만 종료!!
+         
         ```sql
         SET TRANSACTION READ WRITE;      -- 트랜잭션 시작(옵션 ; 안 써도 됨 !!)
         COMMIT;                          -- 트랜잭션 확정

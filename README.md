@@ -181,8 +181,9 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
     - 확장 > Database 검색 > Database client(Weijan Chen) > 확장중 Database 선택
 
     <img src="./image/db002.png" width="700">
-
-- DML
+    > CF) <img src="./image/db003.png" width="700">
+    >     : 표시할 TABLE의 ROW를 지정할 수 있다 !!
+- DML : [INSERT쿼리](./day04/sql01_INSERT.sql), [UPDATE/DELETE쿼리](./day04/sql02_UPDATE_DELETE.sql)
     - INSERT - 테이블에 새로운 데이터를 삽입하는 명령
         - 한 건씩 삽입
         ```sql
@@ -191,40 +192,73 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
         ```
         - 여러 건 한꺼번에 삽입
 
-    - UPDATE - 데이터 변경. WHERE 조건을 없이 실행하면 테이블 모든 데이터가 수정(주의!!)
+    - UPDATE - 데이터 변경. **WHERE 조건을 없이 실행**하면 테이블 모든 데이터가 수정(주의!!)
         ```sql
         UPDATE 테이블명 SET
             컬럼명 = 변경할 값,
             [컬럼명 = 변경할 값]  -- 반복
         [WHERE 조건]    
         ``` 
-    - DELETE - 데이터 삭제. WHERE 조건 없이 실행하면 테이블의 모든 데이터가 삭제(주의 !!)
+    - DELETE - 데이터 삭제. **WHERE 조건 없이 실행**하면 테이블의 모든 데이터가 삭제(주의 !!)
         ```sql
         DELETE FROM 테이블명
         [WHERE 조건];
         ```
-- 트랜잭션
+- 트랜잭션 : [트랜젝션쿼리](./day04/sql03_트랜잭션.sql)
     - 논리적인 처리단위.
     - 은행에서 돈을 찾을 때 아주 많은 테이블 접근해서 일을 처리
-    - 적어도 8개 이상의 테이블에 접근해서 조회하고 업데이트 수행
+        - 적어도 7·8개 이상의 테이블에 접근해서 조회하고 업데이트 수행
         : 수많은 테이블을 거쳐 원하는 정보와 명령을 처리 !!! (예시) ; 트랜잭션 하나
         > - ATM 기계 정보 테이블, 회원 테이블 비밀번호 확인, 계좌정보, 계좌금액 입출금 내역 테이블,
         > - 계좌정보 테이블, 계좌 금액 입출금 내역 테이블 금액 빼기, ATM 기계 총 지폐 정보 테이블,
         > - 영수증 관련 정보 테이블, ATM 기계 정보 테이블, 은행 로그 테이블
-    - 제대로 일이 처리 되지 않으면 원상복귀 !
+        - 제대로 일이 처리 되지 않으면 원상복귀 !
+        - DB 설정 AUTO COMMIT 해제 권함 !!
+        <img src="./image/db003.5.png" width="700">
+        - **ROLLBACK은 트랜잭션 종료가 아님 !!** COMMIT만 종료!! 
         ```sql
-        BEGIN TRANSACTION      -- 트랜잭션 시작
-        COMMIT;                -- 트랜잭션 확정
-        ROLLBACK;              -- 원상복귀
+        SET TRANSACTION READ WRITE;      -- 트랜잭션 시작(옵션 ; 안 써도 됨 !!)
+        COMMIT;                          -- 트랜잭션 확정
+        ROLLBACK;                        -- 원상복귀
         ```
-- 제약조건(Constranint)
+- 제약조건(Constranint) : [제약조건쿼리](./day04/sql04_제약조건.sql)
     - 잘못된 데이터가 들어가지 않도록 막는 기법
-        - PK - 기본키, UNIQUE & NOT NULL
-        - FK - 외래키, 다른 테이블 PK에 없는 값을 가져다 쓸 수 없음
+        - PRIMARY KEY - 기본키, UNIQUE & NOT NULL
+        - FORIEGN KEY - 외래키, 다른 테이블 PK에 없는 값을 가져다 쓸 수 없음
         - NOT NULL - 값이 빠지면 안 됨
         - UNIQUE - 들어간 데이터가 중복되면 안 됨
         - CHECK - 기준에 부합하지 않는 데이터는 입력되면 안 됨
-- INDEX
-- VIEW
+        - DEFAULT - NULL 입력 시 기본값이 입력되도록 하는 제약 조건 
+        ```sql
+        CREATE TABLE 테이블명(
+            컬럼 생성 시 제약조건 추가
+        );
+        ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건
+        ```
+- INDEX : [INDEX쿼리](./day04/sql05_인덱스.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
+    - 책의 찾아보기와 동일한 기능
+    - 검색을 매우 빨리 할 수 있도록 해줌
+    - B(alanced) Tree를 사용해서 검색횟수를 log(n)건으로 줄임
+    - 인덱스 종류
+        - 클러스터드(Clusterd) 인덱스 (테이블 당 1개)
+            - **PK에 자동으로 생성**되는 인덱스 (아주 빠름!!)
+            - PK가 없으면 처음으로 설정되는 UNIQUE 제약 조건의 컬럼에 생성
+        - 보조(Non-Clusterd) 인덱스 (여러개)
+            - 사용자가 추가하는 인덱스
+            - 클러스터드 인덱스보다 조금 느림
+    - 유의점
+        - PK에 자동 인덱스 후 컬럼에 UNIQUE를 걸어도 인덱스가 생성되지 않음 !! 수동으로 생성 필요!
+        - WHERE절에서 검색하는 컬럼은 인덱스를 걸어주는 것이 성능 향상에 도움됨~
+        - 인덱스는 한 테이블 당 4개 이상 걸면 성능이 저하됨
+        - NULL값이 많은 컬럼에 인덱스는 성능 저하
+         > NULL값도 중복으로 생각하기 때문!! 중복이 많으면 찾기 힘듦(NOT UNIQUE)
+        - INSERT, UPDATE, DELETE가 많이 발생하는 테이블에 인덱스를 걸면 성능(속도)이 저하됨 !!
+         > 데이터를 새로 만들면 인덱스도 새로 생성됨!! (PK와는 다름~)
+         ```sql
+         CREATE INDEX 인덱스명 ON 테이블명(인덱스를 걸 컬럼명)
+         ```
+
+## 5일차
+- VIEW 
 - 서브쿼리
 - 시퀀스

@@ -49,6 +49,7 @@ SELECT first_name || last_name || phone_number
 /*
  * 조건절 \ WHERE
  */
+
 -- 연습. employees 테이블에서 employee_id가 110인 직원을 출력하세요. (1행)
 SELECT *
   FROM employees 

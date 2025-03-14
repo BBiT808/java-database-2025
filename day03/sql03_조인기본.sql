@@ -67,6 +67,20 @@ SELECT e.employee_id, e.first_name ||' '|| e.last_name AS "full_name"
    AND l.location_id = d.location_id
    AND d.department_id = 60;
 
+-- ANSI 표준은 오라클방식보다 복잡.
+SELECT e.employee_id, e.first_name || ' ' || e.last_name AS "full_name"
+     , e.email, e.phone_number
+     , e.hire_date, e.job_id
+     , d.DEPARTMENT_ID
+     , d.department_name
+     , l.city, l.STATE_PROVINCE, l.STREET_ADDRESS
+  FROM employees e
+ INNER JOIN departments d
+    ON e.DEPARTMENT_ID artment_id = d.department_id
+ INNER JOIN locations l
+    ON l.location_id = d.location_id
+ WHERE d.department_id = 60;
+
 -- 외부조인(OUTER JOIN) ; 내부조인에서 NULL 값으로 인해 나오지 않았던 값도 나올 수 있음 !!
 -- 내부조인 : 보통 PK와 FK간의 일치하는 조건의 데이터를 찾는 것
 -- 외부조인 : PK와 FK간의 일치하지 않는 조건의 데이터도 찾는 것
@@ -74,14 +88,28 @@ SELECT e.employee_id, e.first_name ||' '|| e.last_name AS "full_name"
 -- 테이블 1번을 기준으로 외부조인 LEFT OUTER JOIN
 -- 테이블 2번을 기준으로 외부조인 RIGHT OUTER JOIN
 
+SELECT *
+  FROM employees e
+ inner JOIN departments d
+    ON e.department_id = d.department_id
+ WHERE e.DEPARTMENT_ID IS NULL;
+
+
+
 -- ANSI 표준문법
+-- employees테이블에는 있는데 departments테이블에는 없는 데이터를 같이 출력해줘
 SELECT *
   FROM employees e
   LEFT OUTER JOIN departments d
     ON e.department_id = d.department_id
  WHERE e.DEPARTMENT_ID IS NULL;
 
----- employees에 있는데
+-- departments테이블에는 있는데 employees 테이블에 없는 데이터를 같이 출력해줘
+SELECT *
+  FROM employees e
+ RIGHT OUTER JOIN departments d
+    ON e.department_id = d.department_id;
+
 
 -- Oracle 문법
 -- (+) 만족하지 않는 조건도 더 나오게 한다는 뜻

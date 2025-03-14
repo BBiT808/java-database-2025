@@ -34,6 +34,9 @@ UPDATE professor_new SET
 
 -- CF)
 
+
+-- 윈도우 - 환경설정 - 연결- 연결유형에서 Auto-commint by default 를 체크 해제해주기 !!!
+--  >> 이후 한번 데이터베이스를 껐다 켜주거나 리셋을 시켜줘야 트랜잭션과 롤백을 할 수 있게 됨 !!!!
 SET TRANSACTION READ WRITE;
 -- 안 써도 무방하긴 하지만 !!! 그래도 한 번 써놓자.
 

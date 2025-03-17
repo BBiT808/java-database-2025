@@ -282,7 +282,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
 - 시퀀스 : [시퀀스쿼리](./day05/sql03_시퀀스.sql)
     - 번호로 지정된 PK값을 자동으로 삽입할 수 있도록 도와주는 기능
     - 없어도 기능에는 차이가 없지만 효율을 위해서 사용
-        #### 만든다 하면 CREATE!!! 그래서 CREATE는 DDL이야~
+     > ** 만든다 하면 CREATE!!! 그래서 CREATE는 DDL이야~**
     - **Oracle만 존재 !!**
         ```sql
         CREATE SEQUENCE 시퀀스명

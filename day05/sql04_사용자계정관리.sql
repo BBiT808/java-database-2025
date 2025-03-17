@@ -17,6 +17,8 @@ SELECT *
 -- CREATE TABLE, ALTER ANY TABLE, DROP ANY TABLE, ...
   -- 권한은 하나하나 다 부여해야 함! ; CONNECT / RESOURCE로 주는게 편함 !!
 
+
+
 /* 스콧 계정이 없어!!!!!! WHERE IS SCOTT??
 -- scott 계정 잠금해제
 ALTER USER SCOTT account unlock;
@@ -24,6 +26,8 @@ ALTER USER SCOTT account unlock;
 -- scott은 create session 권한 없음. LOGON DENIED.
 -- scott에서 접속권한 부여
 GRANT CREATE SESSION TO scott;*/
+
+
 
 SELECT * FROM jobs;
 

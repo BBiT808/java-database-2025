@@ -1,5 +1,5 @@
-/* 내장함수
- * 
+/* 
+ * 내장함수
  * */
 
 /* 문자(열) 함수 */
@@ -17,7 +17,7 @@ SELECT lower(first_name) AS "first_name"  --AS를 붙이지 않으면 함수가 
 -- LENGTH()/ LENGTHB() 함수
 SELECT LENGTH('hello oracle')      -- 영어는 글자길이 12
 	 , lengthb('hello oracle')     -- 12bytes
-	 , LENGTH('반가워요 오라클')   -- 한글 글자길이 8
+	 , LENGTH('반가워요 오라클')       -- 한글 글자길이 8
 	 , lengthb('반가워요 오라클')  
 	   -- 22bytes  ; 한글은 1byte로 표현 못함(multibyte lang), 한글 7자*3bytes = 21bytes + 공백 1byte
 	 , ASCII('A')
@@ -25,6 +25,9 @@ SELECT LENGTH('hello oracle')      -- 영어는 글자길이 12
 	 , ASCII('가')
   FROM dual;
 
--- CONCAT()  : 두개를 합쳐주기 !! == || 와 동일기능 !!
+-- CONCAT()  : 두개를 합쳐주기 !! ; || 와 동일기능 !!
 SELECT concat(concat(first_name,' '), last_name) AS "full_name"
   FROM employees;
+
+--
+COMMIT;

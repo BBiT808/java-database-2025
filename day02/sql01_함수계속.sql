@@ -41,10 +41,12 @@ SELECT phone_number
 /*
  * 숫자함수, 집계함수와 같이 사용 많이 됨 !!
  * */
--- ROUND() 반올림 함수 =-파이썬 존재
--- CEIL()  올림함수, FLOOR() 내림함수, TRUNC() 내림함수 소수점
--- MOD() 나누기 나머지값 - 파이썬 mode(), % 연산과 동일
+
+-- ROUND() 반올림 함수 ; 파이썬 존재
+-- CEIL() 올림함수 / FLOOR() 내림함수 / TRUNC() 내림함수 소수점
+-- MOD() 나누기 나머지값 ; 파이썬의 mode(), % 연산과 동일
 -- POWER() 파이썬 math.pow(), power(), 2^10 승수 계산 동일 !
+
 SELECT 786.5427 AS res1
 	 , round(786.5427) AS round0      -- 소수점 없음
 	 , round(786.5427, 1) AS round0   -- 소수점 첫째 자리
@@ -58,18 +60,20 @@ SELECT 786.5427 AS res1
 
 /*
  * 날짜함수, 나라마다 표현방식 다름
+ * 
  * 2025-03-12 아시아 ... 
  * March/12/2025 미국, 캐나다 ...
  * 12/March/2025 유럽, 인도, 베트남 ...
  * 포맷팅을 많이 함 ! 
+ * 
  * */
 
 -- 오늘 날짜
-SELECT sysdate  AS "오늘"-- 그리니치 표준시간(GMT)을 따름 (우리나라와 9시간 차이 !!; +09)
+SELECT sysdate  AS 오늘 -- 그리니치 표준시간(GMT)을 따름 (우리나라와 9시간 차이 !!; GMT+09)
 	-- 날짜 포맷팅 사용되는 YY, YYYY, MM, DD, DAY 년월일
 	-- AM/PM, HH, HH24, MI, SS, W, Q(분기)
-	 , TO_CHAR(sysdate, 'YYYY-MM-DD') AS "날짜" 
-	 , TO_CHAR(sysdate, 'AM/PM HH24:MI:SS') AS "시간"
+	 , TO_CHAR(sysdate, 'YYYY-MM-DD') AS 날짜 
+	 , TO_CHAR(sysdate, 'AM/PM HH24:MI:SS') AS 시간
 	 , TO_CHAR(sysdate, 'MON/DD/YYYY') AS 미국식
 	 , TO_CHAR(sysdate, 'DD/MON/YYYY') AS 영국식
   FROM dual;
@@ -93,13 +97,14 @@ SELECT to_char(sysdate + INTERVAL '9' HOUR, 'YYYY-MM-DD HH24:MI:SS') AS seoul_ti
  * 형 변환 함수
  * 
  * */
+
 -- TO_CHAR() : 숫자형을 문자형으로 변경
 SELECT 12345 AS 원본
 	 , to_char(12345, '9999999') AS "원본+두자리"
 	 , to_char(12345, '0999999') AS "원본+두자리0"
 	 , to_char(12345, '$999999') AS "통화단위+원본"
 	 , to_char(12345, '99999.99') AS 소수점
-	 , to_char(12345, '99,999') AS "천 단위 쉼표"   -- **진짜 많이 씀 !!
+	 , to_char(12345, '99,999') AS "천 단위 쉼표"   -- **진짜 많이 씀 !! ; 자리수만큼 9를 써줘야 적용됨 !!
   FROM dual;
 
 -- TO_NUMBER() 문자형된 데이터를 숫자로
@@ -132,16 +137,16 @@ SELECT commission_pct
   FROM employees;
 
 -- DECODE(A, B, '1', '2') A가 B일 경우 1 아니면 2 !
--- 오라클만 있는 특징적인 함수 ~
+  -- 오라클만 있는 특징적인 함수 ~
 SELECT email, phone_number, job_id
 	 , DECODE(job_id, 'IT_PROG', '개발자 만쉐이!!', '나머지는.. 나머지.') AS 캐치프레이즈
   FROM employees
  --WHERE job_id = 'IT_PROG';
   
-  /*
-   * CASE 구문, 정말 중요!!
-   * if, elif의 중복된 구문과 유사 
-   * */
+/*
+ * CASE 구문, 정말 중요!!
+ * if, elif의 중복된 구문과 유사 
+ * */
   
 SELECT CASE job_id WHEN 'AD_PRES' THEN '사장'
 				   WHEN 'AD_VP' THEN '부사장'
@@ -153,11 +158,12 @@ SELECT CASE job_id WHEN 'AD_PRES' THEN '사장'
 	 , job_id  
   FROM employees;
   
-  /*
-   * 정규식(Requla Expression) : 문자열 패턴을 가지고, 동일한 패턴 데이터 추출 사용
-   * ^, $, \., *, [], [^] 패턴인식할 때 필요한 키워드.
-   * 
-   * */
+/*
+ * 정규식(Requla Expression) : 문자열 패턴을 가지고, 동일한 패턴 데이터 추출 사용
+ * 
+ * ^, $, \., *, [], [^] 패턴인식할 때 필요한 키워드.
+ * 
+ * */
 
 
 SELECT *
@@ -176,4 +182,7 @@ SELECT *
 SELECT *
   FROM employees
  WHERE regexp_like(first_name, '^J(a|o)');
+
+--
+COMMIT;
  

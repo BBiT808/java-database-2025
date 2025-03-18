@@ -339,7 +339,7 @@ Java 개발자 과정 Database 리포지토리(오라클, SQL)
         PL/SQL Block;
         /
         ```
-        - 실행 시 EXEC를 사용해야 한다 !!
+        - 실행 시 CALL|EXEC를 사용해야 한다 !!
         ```sql
         CALL 프로시저명 (파라미터)
         EXEC 프로시저명 (파라미터) ; DBEAVER에서 사용 불가

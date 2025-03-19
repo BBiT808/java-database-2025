@@ -45,4 +45,57 @@
 
     <img src="../image/db006.png" width="600">
 
-#### Oracle연동 GUI개발 
+#### Oracle연동 GUI개발 시작!!
+- 오라클 Python연동 DB(스키마) 생성
+    ```sql
+    --sys(sysdba)로 작업
+-- 20250319 파이썬과 데이터베이스 연동 !!
+
+-- madang 스키마, 사용자 생성
+CREATE USER madang IDENTIFIED BY madang;
+
+-- 권한 설정
+GRANT CONNECT, resource TO madang;
+
+-- madang으로 사용 및 스키마 변경 !!
+
+-- 테이블 Student 생성
+CREATE TABLE Students (
+	std_id 		NUMBER PRIMARY KEY,
+	std_name 	varchar2(100) NOT NULL,
+	std_mobile 	varchar2(15) NULL,
+	std_regyear number(4,0) NOT NULL
+);
+
+-- Students용 시퀀스 생성
+CREATE SEQUENCE SEQ_STUDENT
+	INCREMENT BY 1     -- 숫자를 1씩 증가
+	START WITH 1; 	   -- 1부터 숫자가 증가됨
+    ```
+
+- Student 테이블 생성, 더미데이터 추가
+    ```sql
+    -- madang으로 로그인
+    -- 조회
+    SELECT * FROM Students;
+
+    -- 더미데이터 삽입
+    INSERT INTO Students (std_id, std_name, std_mobile, std_regyear)
+    VALUES(SEQ_STUDENT.nextval, '홍길동', '010-9999-8888', 1997);
+
+    INSERT INTO Students (std_id, std_name, std_mobile, std_regyear)
+    VALUES(SEQ_STUDENT.nextval, '홍길순', '010-9999-8877', 2000);
+
+    COMMIT;
+    ```
+
+## 7,8일차 !!!
+- Python 오라클 연동 테스트
+    - 오라클 모듈
+        - oracledb - Oracle 최신버전에 매칭 (**구버전은 안 됨!**)
+        - **cx_Oracle** - 구버전까지 잘 됨!
+    - 콘솔에서 `> pip install cx_Oracle`
+    - Microsoft C++ Build Tools 필요
+- QtDesigner로 화면 구성
+- PyQt로 Oracle 연동 CRUD 구현
+    - [토이프로젝트](./madang_작업쿼리.sql)

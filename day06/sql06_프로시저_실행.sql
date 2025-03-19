@@ -11,5 +11,7 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(v_empno || '는 이름은 '|| o_ename || '이고, 급여는 '|| o_sal);
 END;
 
+-- Output 창은 Ctrl + Shift + O !!! 
+
 --
 COMMIT;

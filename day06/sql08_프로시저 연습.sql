@@ -1,8 +1,15 @@
 --
+COMMIT;
+
+--
 SELECT * FROM emp;
 
+
+-- 커서로 반복하는 프로시저 실행
 CALL emp_list();
 
+
+-- 프로시저 연습실행
 CALL professor_info(1001);
 
 CALL emp_info(7900);

@@ -49,4 +49,5 @@ UPDATE dept SET
  WHERE deptno = 40;
 
 --
+ROLLBACK;
 COMMIT;

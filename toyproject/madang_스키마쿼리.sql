@@ -25,3 +25,9 @@ CREATE SEQUENCE SEQ_STUDENT
 --
 COMMIT;
 -- 사용자 madang으로 변경
+
+--STUDENT TABLE에 가서 우클릭에 SQL 생성 - copy 클릭!!!
+INSERT INTO MADANG.STUDENTS (std_id, std_name, std_mobile, std_regyear)
+VALUES (SEQ_STUDENT.NEXTVAL,:v_std_name,:v_std_mobile, :v_std_regyear);
+
+-- 코딩을 많이 할수록 툴을 잘 쓸 수 있도록 하자~

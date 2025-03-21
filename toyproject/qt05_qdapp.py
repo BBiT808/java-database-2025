@@ -12,7 +12,7 @@ class DevWindow(QMainWindow):
     def initUI(self):
         # Qtdesigner 생성 ui 파일 로드
         uic.loadUi('./toyproject/sampleqt(선생님).ui', self)
-        #self.setWindowIcon(QIcon('./image/database.png'))
+        self.setWindowIcon(QIcon('./image/database.png'))
         # ui에 있는 위젯 접근하려면 이름 그대로 사용
         self.lbl1.setText('UI를 로드했습니다!')
         self.btn1.clicked.connect(self.btn1click)

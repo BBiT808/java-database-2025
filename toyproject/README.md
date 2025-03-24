@@ -184,5 +184,12 @@ CREATE SEQUENCE SEQ_STUDENT
         - ER 다이어그램 그리기
             > 우클릭 create - er diagram - 만든 표 데이터 선택해서 다이어그램 만들 수도 있음 !!
         <img src="../image/db014.png" width="650">
+
+
+### 20250324 sql 10번째 수업!!!!!!!!!!!!!!! 갸아아아악 배운지 한달이 넘었어 !!!!!
+## 10일차 !!!!!
+- HR SQL 연습
+- 코?딩?테?스?트?
+
         
 
